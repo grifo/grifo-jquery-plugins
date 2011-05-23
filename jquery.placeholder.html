@@ -1,0 +1,35 @@
+---
+layout: default
+title: jQuery.placeholder
+---
+
+  <style scoped>
+    input.empty { color:#aaa; }
+    fieldset { margin:30px; }
+  </style>
+
+  <h1>Grifo jQuery plugins - placeholder</h1>
+  
+  <form action="" method="get" accept-charset="utf-8">
+    <fieldset>
+      <legend>text input</legend>
+      <input type="text" name="text_input" value="" id="text_input" placeholder="Text" title="Text" />
+    </fieldset>
+    <fieldset>
+      <legend>html5 email input</legend>
+      <input type="email" name="email_input" value="" id="email_input" placeholder="Email" title="Email" />
+    </fieldset>
+    <fieldset>
+      <legend>password field</legend>
+      <input type="password" name="password" value="" id="password" placeholder="Password" title="Password" />
+    </fieldset>
+  </form>
+  
+  <script src="https://github.com/grifo/grifo-jquery-plugins/raw/master/source/jquery.placeholder.js"></script>
+  <script>
+  (function($){
+    
+    $('input').placeholder()
+    
+  })(jQuery)
+  </script>
