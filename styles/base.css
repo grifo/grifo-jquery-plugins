@@ -66,3 +66,14 @@ input {
 	border-radius:3px;
 	font-size:13px;
 }
+#authors ul,
+#authors li {
+	margin:0;
+	padding:0;
+}
+#authors li {
+	list-style:none;
+	line-height:1.6;
+}
+
+#examples li { line-height:1.6; }
