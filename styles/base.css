@@ -9,7 +9,7 @@ body {
 	width: 700px;
 }
 h1, h2, h3, h4, h5 {
-	font-family: 'Josefin Slab', sans-serif;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
 	color: #45A4FF;
 }
 h1 {
@@ -50,8 +50,19 @@ hr {
 	width: 80%;
 	border-bottom: 1px solid #aaa
 }
+fieldset {
+	border-color:#227;
+}
 .footer {
 	text-align: center;
 	padding-top: 30px;
 	font-style: italic;
+}
+
+input {
+	padding:2px 4px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+	font-size:13px;
 }
