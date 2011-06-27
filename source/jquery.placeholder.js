@@ -17,7 +17,7 @@ $.fn.placeholder = function(opts){
 	}, opts)
 	
 	// test for native support
-	if ('placeholder' in document.createElement('input'))
+	if (options.attr === 'placeholder' && 'placeholder' in document.createElement('input'))
 		return this
 
 	return this.each(function(){
