@@ -4,61 +4,43 @@
  * Copyright 2010, Grifo Tecnologia
  * Licensed under the MIT License 
  *
- * simple tab behaviour
- * @author Ricardo Tomasi <ricardo.tomasi@grifotecnologia.com.br>
+ * simple tab behaviour with anchor
+ * @author Renatho Rosa <renatho@gri.fo>
  *
  */
-;(function($){
-$.fn.tabs = function(opts){
-	
-	var options = $.extend({
-	    tabs     : '.tabs'
-	  , content  : '.tab-content'
-	  , active   : 'ativo'
-	  , show     : showDefault
-	  , hide     : hideDefault
-	  , onchange : null
-	}, opts)
-	
-	function showDefault(){
-		$(this).show()
-	}
-	
-	function hideDefault(){
-		$(this).hide()
-	}
+$.fn.tabs = function(options){ 
+	var defaults = { 
+		anchor:false
+	};
+	var options = $.extend({}, defaults, options);
 
 	return this.each(function(){
+		var lis = $(this).find('li')
+		  , links = lis.find('a')
+		  , contents = $('');
 
-		var root = $(this)
-		  , tabs = root.find( opts.tabs )
-		  , li = tabs.find('li')
-		  , links = tabs.find('a')
-		  , content = root.find( opts.content )
-		  , classes = $.map(content, function(el){ return 'tab-'+el.id; }).join(' ')
-
-		links.click(function(e, init){
-
-			var self = $(this)
-			  , targetID = self.attr('href')
-			  , target = $(targetId)
-
-			root.removeClass( classes ).addClass( 'tab-'+targetID.substring(1).replace(/\W/g,'') )
-
-			content.each( opts.hide )
-			target.each( init ? showDefault : opts.show )
-
-			li.removeClass( opts.active )
-			self.parent().addClass( opts.active )
-
-			self.delay(200).blur()
-
-			opts.onchange && opts.onchange.call && opts.onchange( this, target )
-
-			return false
+		links.each(function(){
+			var target = $(this).attr('href')
+			contents = contents.add($(target))
 		})
 
-		links.eq(0).trigger('click', [true])
-	})
+		lis.each(function(i){
+			var li = $(this)
+			function changeNav(e){
+				e && e.preventDefault()
+				var target = $(this).attr('href')
+				lis.removeClass('active')
+				li.addClass('active')
+				contents.removeClass('active')
+				$(target).addClass('active')
+			}
+			li.find('a').click(changeNav)
+		})
+
+		// Anchor on start
+		if (options.anchor) {
+			links.filter("[href='"+window.location.href.replace(/.*#/g,"#")+"']").click();
+		}
+	});
+
 }
-})(jQuery);
