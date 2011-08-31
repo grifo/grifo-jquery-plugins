@@ -24,7 +24,6 @@
 			maxlength_track: 100
 		}, opts);
 
-
 		return this.each(function(){
 			var self = $(this),
 				maxlength = self.attr('maxlength'),
