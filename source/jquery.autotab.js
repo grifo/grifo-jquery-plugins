@@ -9,44 +9,44 @@
  *
  */
 ;(function($){
-    $.fn.autotab = function(opts){
-        var options = $.extend({
-            parent: 'form'
-          , elements: 'input, select, textarea, button, a'
-          , items: function(target){
-                return $(target).closest(options.parent).find(options.elements)
-            }
-          , refresh: false
-          , mask_set: '_'
-          , mask_to: ''
-          , maxlength_track: 100
-        }, opts)
+$.fn.autotab = function(opts){
+    var options = $.extend({
+        parent: 'form'
+      , elements: 'input, select, textarea, button, a'
+      , items: function(target){
+            return $(target).closest(options.parent).find(options.elements)
+        }
+      , refresh: false
+      , maskSet: '_'
+      , maskTo: ''
+      , maxlengthTrack: 100
+    }, opts)
 
-        return this.each(function(){
-            var self = $(this)
-              , maxlength = self.attr('maxlength')
-              , items
-            
-            if (maxlength && maxlength <= options.maxlength_track){
-                self.focus(function(){
-                    self.data('printable', false)
-                    if (options.refresh || !items){
-                        items = options.items(self)
-                    }
-                })
-
-                self.keypress(function(e){
-                    self.data('printable', e.which !== 0 && e.charCode !== 0)
-                })
-
-                self.keyup(function(e){
-                    if (self.data('printable')
-                        && self.val().replace(options.mask_set, options.mask_to).length >= maxlength
-                    ){
-                        items.eq(items.index(self) + 1).focus()
-                    }
-                })
+    return this.each(function(){
+        var self = $(this)
+          , maxlength = self.attr('maxlength')
+          , items
+        
+        if (!maxlength || maxlength > options.maxlengthTrack) return
+        
+        self.focus(function(){
+            self.data('printable', false)
+            if (options.refresh || !items){
+                items = options.items(self)
             }
         })
-    }
+
+        self.keypress(function(e){
+            self.data('printable', e.which !== 0 && e.charCode !== 0)
+        })
+
+        self.keyup(function(e){
+            if (self.data('printable')
+                && self.val().replace(options.maskSet, options.maskTo).length >= maxlength
+            ){
+                items.eq(items.index(self) + 1).focus()
+            }
+        })
+    })
+}
 })(jQuery);
