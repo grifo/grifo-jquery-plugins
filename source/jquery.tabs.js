@@ -8,6 +8,7 @@
  * @author Renatho Rosa <renatho@gri.fo>
  *
  */
+;(function($){
 $.fn.tabs = function(options){ 
 	var defaults = { 
 		anchor:false
@@ -42,5 +43,5 @@ $.fn.tabs = function(options){
 			links.filter("[href='"+window.location.href.replace(/.*#/g,"#")+"']").click();
 		}
 	});
-
 }
+})(jQuery);
