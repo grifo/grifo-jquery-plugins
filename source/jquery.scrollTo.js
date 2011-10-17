@@ -15,8 +15,7 @@ function _scroll(){
 	var doc = document.documentElement || document.body
 	  , top = $(this).offset().top
 
-	if (top > doc.scrollTop)
-		return this
+	if (top > doc.scrollTop) return this
 
 	$(doc).animate({
 		scrollTop: top-(margin||30)
@@ -26,7 +25,7 @@ function _scroll(){
 
 $.fn.scrollTo = function(queue, margin){
 
-	if (!!queue){
+	if (queue){
 		this.eq(0).queue('fx', function(){
 			_scroll.call(this)
 			$(this).dequeue()

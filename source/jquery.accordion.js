@@ -32,8 +32,7 @@ $.fn.accordion = function(opts){
 
 		link.bind('mousedown keydown', function(e){
 			// abrir somente com enter/espaço/down
-			if (e.type == 'keydown' && $.inArray(e.which, [13,32,40]) < 0)
-				return
+			if (e.type == 'keydown' && $.inArray(e.which, [13,32,40]) < 0) return
 				
 			content_all.not(ctn).slideUp('fast')
 			ctn.stop(true,true).slideToggle()

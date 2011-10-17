@@ -17,8 +17,7 @@ $.fn.placeholder = function(opts){
 	}, opts)
 	
 	// test for native support
-	if (options.attr === 'placeholder' && 'placeholder' in document.createElement('input'))
-		return this
+	if (options.attr === 'placeholder' && 'placeholder' in document.createElement('input')) return this
 
 	return this.each(function(){
 
@@ -27,8 +26,7 @@ $.fn.placeholder = function(opts){
 			, isPassword = input.attr('type') === 'password'
 			, replaced
 
-		if (!text)
-			return
+		if (!text) return
 
 		// replace password input with type=text to show placeholder text
 		// reverts back to type=password when focused
@@ -53,10 +51,11 @@ $.fn.placeholder = function(opts){
 			if ($.trim(this.value) != ""){
 				return
 			}
-			if (isPassword)
+			if (isPassword){
 				input.after(replaced).hide()
-			else
+			} else {
 				input.val(text).addClass(options.emptyClass)
+			}
 		})
 
 		if (isPassword){
