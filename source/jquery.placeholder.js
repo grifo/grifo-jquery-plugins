@@ -22,7 +22,7 @@ $.fn.placeholder = function(opts){
 	return this.each(function(){
 
 		var input = $(this)
-			, text = input.attr(options.textSource)
+			, text = input.attr(options.attr)
 			, isPassword = input.attr('type') === 'password'
 			, replaced
 
