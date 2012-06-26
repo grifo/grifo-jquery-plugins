@@ -51,24 +51,7 @@
 					}
 				}
 			})
-		},
-
-		// Save state
-		saveState: function(options) {
-			var defaults = { 
-				attr: 'class,style', 
-				hours: 24*365, 
-				path: window.location.href,
-				cookieName:'saveState'
-			},
-			options = $.extend({}, defaults, options)
-
-			modMan.tools.cookie.create(options.cookieName,$(this).serializeState(options.attr),options.hours,options.path);
-		},
-
-		// Load state
-		loadState: function(cookieName) {
-			$(this).restoreState(modMan.tools.cookie.read(cookieName))
 		}
+		
 	})
 })(jQuery)
